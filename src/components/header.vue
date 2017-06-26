@@ -23,20 +23,22 @@
     background url("bg.png") 0 0 repeat-x
     background-size contain
     .icon-back,.icon-search
-      width 36px
       height 38px
-      flex 0 0 36px
       line-height 38px
       color #fff
     .icon-back
+      width 36px
+      flex 0 0 36px
       text-align right
       font-size 24px
     .icon-search
+      width 38px
+      flex 0 0 38px
       text-align left
       font-size 22px
     .header-logo
       flex 1
-      background url("logo.png") center center no-repeat #fff
+      background url("logo.png") center center no-repeat
       background-size contain
 
 </style>
