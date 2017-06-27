@@ -22,6 +22,7 @@
     padding 4px 0
     background url("bg.png") 0 0 repeat-x
     background-size contain
+    z-index 3000
     .icon-back,.icon-search
       height 38px
       line-height 38px
@@ -30,7 +31,7 @@
       width 36px
       flex 0 0 36px
       text-align right
-      font-size 24px
+      font-size 25px
     .icon-search
       width 38px
       flex 0 0 38px
