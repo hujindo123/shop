@@ -2,8 +2,11 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import main from '@/views/home/main'; // 主框架
 import index from '@/views/home/index'; // 主页
-import more from '@/views/home/more'; // 更多页面
+import more from '@/views/home/more';// 更多页面
 import details from '@/views/details/details'; // 详情页面
+import store from '@/views/store/store'; // 店面详情
+import goods from '@/views/store/goods'; // 商品
+import goodsDetails from '@/views/store/goodsDeatils'; // 店铺详情
 Vue.use(Router);
 export default new Router({
   mode: 'history',
@@ -24,6 +27,21 @@ export default new Router({
         {
           path: '/details',
           component: details
+        },
+        {
+          path: '/store',
+          component: store,
+          redirect: '/goods',
+          children: [
+            {
+              path: '/goods',
+              component: goods
+            },
+            {
+              path: '/goodsDetails',
+              component: goodsDetails
+            }
+          ]
         }
       ]
     }

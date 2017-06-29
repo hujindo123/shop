@@ -94,4 +94,5 @@
           right 12px
           font-size 14px
           top 17px
+          color rgb(25, 25, 25)
 </style>

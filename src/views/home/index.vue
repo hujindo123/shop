@@ -15,11 +15,13 @@
         <v-list></v-list>
       </scroller>
     </div>
+    <v-footer></v-footer>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import header from '@/components/header/header';
+  import footer from '@/components/footer/footer';
   import swiper from '@/components/swiper/swiper';
   import list from '@/components/list/list';
   const ERR_OK = 200;
@@ -49,6 +51,7 @@
     },
     components: {
       'vHeader': header,
+      'v-footer': footer,
       'vSwiper': swiper,
       'vList': list
     }
@@ -86,7 +89,6 @@
       flex 1
       background url("./logo.png") center center no-repeat
       background-size contain
-
   .main_wrapper
     width 100%
     height 100%
