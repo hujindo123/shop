@@ -11,7 +11,7 @@
 <style lang="stylus" rel="stylesheet/stylus">
   .download
     width 100%
-    position absolute
+    position fixed
     bottom 0
     left 0
     background #e85b4d

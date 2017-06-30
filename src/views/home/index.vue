@@ -6,13 +6,13 @@
         <div class="nav">
           <div class="items">
             <template  v-for="(x, index) in list">
-              <router-link to="/more" class="item"><img :src="x.img">
+              <router-link :to="{path:x.name == '更多分类' ?'/more':'/typepage',query:{name: x.name}}" class="item"><img :src="x.img">
                 <p class="pic-t">{{x.name}}</p></router-link>
             </template>
           </div>
         </div>
         <v-swiper :banner="banner"></v-swiper>
-        <v-list></v-list>
+        <v-list :line="false"></v-list>
       </scroller>
     </div>
     <v-footer></v-footer>

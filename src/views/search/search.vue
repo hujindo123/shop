@@ -1,30 +1,30 @@
 <template>
-  <div class="store_main">
-    <v-header :title="title" :type="2" style="position: relative"></v-header>
-    <v-nav></v-nav>
+  <div>
+    <v-header :type="3"></v-header>
+    <scroller class="search-list">
+      <v-list :tj="true"></v-list>
+    </scroller>
+
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import header from '@/components/header/header';
-  import nav from '@/components/nav/nav';
+  import list from '@/components/list/list';
   export default {
     data () {
       return {
-        title: '精品超市'
+        type: 2
       };
     },
     components: {
       'vHeader': header,
-      'vNav': nav
+      'vList': list
     }
   };
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  .store_main
-    width 100%
-    height 100%
-    position relative
-    overflow hidden
+.search-list
+  padding-top 44px
 </style>

@@ -13,15 +13,51 @@
             <div class="line last"><span class="icon_time">东风路767号东宝大厦21楼</span></div>
             <div class="list_m">13m</div>
           </div>
-
         </div>
       </router-link>
+      <div v-if="tj">
+        <router-link to="/details" class="tj">
+          <div class="tj_line">
+            <div class="details_tj">电脑卡风扇电脑卡风扇很小很好电脑卡风扇很小很好很小很好，12英寸</div>
+            <div class="details_price">￥12056.00</div>
+          </div>
+        </router-link>
+        <router-link to="/details" class="tj">
+          <div class="tj_line">
+            <div class="details_tj">电脑卡风扇电脑卡风扇很小很好电脑卡风扇很小很好很小很好，12英寸</div>
+            <div class="details_price">￥12056.00</div>
+          </div>
+        </router-link>
+        <router-link to="/details" class="tj">
+          <div class="tj_line">
+            <div class="details_tj">电脑卡风扇电脑卡风扇很小很好电脑卡风扇很小很好很小很好，12英寸</div>
+            <div class="details_price">￥12056.00</div>
+          </div>
+        </router-link>
+      </div>
+      <div class="entry-line" v-show="line"></div>
     </li>
   </ul>
 </template>
 
 <script type="text/ecmascript-6">
-  export default {};
+  export default {
+    props: {
+      line: {
+        type: Boolean,
+        default: true
+      },
+      tj: {
+        type: Boolean, // 底部推荐
+        default: false
+      }
+    },
+    data () {
+      return {
+        a: true
+      };
+    }
+  };
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
@@ -34,6 +70,7 @@
       position relative
       background url("../../../static/img/repeat-x.png") left bottom repeat-x
       background-size 0.1rem 0.1rem
+      background-color #fff
       .list_item_wrapper
         width 100%
         box-sizing border-box
@@ -95,4 +132,49 @@
           font-size 14px
           top 17px
           color rgb(25, 25, 25)
+
+      .tj
+        position relative
+        padding 0 10px
+        display block
+        width 100%
+        box-sizing border-box
+        .tj_line
+          width 100%
+          display flex
+          padding 12px 0
+          position relative
+          background url("../../../static/img/repeat-x.png")
+          background-repeat repeat-x, repeat-x
+          background-position left top
+          background-size 0.1rem 0.1rem
+          .details_tj
+            flex 1
+            font-size 13px
+            overflow hidden
+            text-overflow ellipsis
+            white-space nowrap
+            color rgb(26, 26, 26)
+          .details_price
+            width 70px
+            flex 0 0 70px
+            text-align right
+            color rgb(235, 66, 52)
+            font-size 12px
+            vertical-align middle
+      .entry-line
+        width 100%
+        height 10px
+        background #f5f5f5
+        &::after
+          width 100%
+          height 0.1rem
+          content ''
+          display block
+          position absolute
+          left 0
+          bottom 0
+          background url('../../../static/img/repeat-x.png') 0 0 repeat-x
+          background-size 0.1rem 0.1rem
+
 </style>

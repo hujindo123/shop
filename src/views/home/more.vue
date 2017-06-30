@@ -4,7 +4,7 @@
     <scroller>
       <div class="more_list">
         <template v-for="(x, index) in list">
-          <router-link to="" class="more_item">
+          <router-link :to="{path:'/typepage',query:{name: x.name}}" class="more_item">
             <img :src="x.img">
             <p class="pic-t">{{x.name}}</p>
           </router-link>
@@ -21,7 +21,7 @@
     data () {
       return {
         list: [
-          {name: '更多分类', img: 'static/img/list-icon/more.png'},
+          {name: '全部分类', img: 'static/img/list-icon/more.png'},
           {name: '美食', img: 'static/img/list-icon/food.png'},
           {name: '超市百货', img: 'static/img/list-icon/shop.png'},
           {name: '休闲娱乐', img: 'static/img/list-icon/fire.png'},
