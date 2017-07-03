@@ -1,37 +1,35 @@
 <template>
   <ul class="footer">
-    <li class="footer-nav" @click="change(1)">
-      <router-link to="/index" class="home" :class="{'router-link-exact-active': first}">
-        <i class="icon-shop"></i>
+    <li class="footer-nav">
+      <router-link to="/index" class="home">
+        <div class="img home-img"></div>
         <span>首页</span>
       </router-link>
     </li>
-    <li class="footer-nav" @click="change(2)">
+    <li class="footer-nav">
       <router-link :to="{path: '/details',query:{ areaid: 3}}" class="sxf">
-        <i class="icon-position"></i>
+        <div class="img position-img"></div>
         <span>附近商家</span>
       </router-link>
     </li>
-    <li class="footer-nav" @click="change(3)">
-      <transition name="list-fade">
-        <ul class="about" v-if="listShow">
-          <li class="list-li">
-            <router-link to="/download">下载APP</router-link>
-          </li>
-          <li class="list-li">
-            <router-link to="/b">ABCD</router-link>
-          </li>
-          <li class="list-li">
-            <router-link to="/c">ABCE</router-link>
-          </li>
-        </ul>
-      </transition>
-      <span>
-        <a :class="{'router-link-exact-active': onfocus}">
-          <i class="icon-user"></i>
-          <span>关于我们</span>
-        </a>
-      </span>
+    <li class="footer-nav" @click="change">
+         <transition name="list-fade">
+           <ul class="about" v-if="listShow">
+             <li class="list-li">
+               <router-link to="/download">下载APP</router-link>
+             </li>
+             <li class="list-li">
+               <router-link to="/b">ABCD</router-link>
+             </li>
+             <li class="list-li">
+               <router-link to="/c">ABCE</router-link>
+             </li>
+           </ul>
+         </transition>
+      <a class="user">
+        <div class="img user-img"></div>
+        <span>关于我们</span>
+      </a>
     </li>
   </ul>
 </template>
@@ -59,11 +57,8 @@
       }
     },
     methods: {
-      change (t) {
-        if (t > 1) {
-          this.first = false;
-        }
-        t < 3 ? this.listShow = false : this.listShow = !this.listShow;
+      change () {
+        this.listShow = !this.listShow;
       }
     }
   };
@@ -74,12 +69,11 @@
   .footer
     width 100%
     height 50px
-    line-height 50px
     display flex
     position fixed
     bottom 0
     left 0
-    font-size 14px
+    font-size 0
     z-index 1000
     background #fff
     .footer-nav
@@ -88,39 +82,64 @@
       text-align center
       background url("../../../static/img/repeat-x.png") left top repeat-x
       background-size 0.1rem 0.1rem
-      font-size 13px
-      .icon-shop, .icon-position, .icon-user
-        font-size 26px
+      a
+        display block
+        width 100%
+        height 50px
+      .link-active
+        span
+          color #25b9cb
+      span
+        display block
+        margin-top 3px
+        font-size 13px
+      .img
+        width 25px
+        height 25px
+        margin 5px auto 0
+        display inline-block
+      .home
+        .home-img
+          background url('../../../static/img/home.png') center center no-repeat
+          background-size contain
+        &.link-active
+          .home-img
+            background url('../../../static/img/home-active.png') center center no-repeat
+            background-size contain
+      .sxf
+        .position-img
+          background url('../../../static/img/postion.png') center center no-repeat
+          background-size contain
+        &.link-active
+          .position-img
+            background url('../../../static/img/postion-active.png') center center no-repeat
+            background-size contain
+      .user
+        .user-img
+          background url('../../../static/img/user.png') center center no-repeat
+          background-size contain
+        &.link-active
+          .user-img
+            background url('../../../static/img/user-active.png') center center no-repeat
+            background-size contain
       .about
         width 100%
         height 150px
         position absolute
         background #f5f5f5
         top -150px
+        font-size 13px
+        line-height 50px
         &.list-fade-enter-active, list-fade-leave-active
           transition all 0.2s ease
         &.list-fade-enter, list-fade-leave-active
           opacity 0
           transform translateY(10px)
         .list-li
-          border-del-bottom-1px()
-      a
-        height 40px
-        width 100%
-        display inline-block
-        font-size 14px
-        line-height 40px
-        background-size 19px 15px
-        background-repeat no-repeat
-        background-position center 10px
-        &.router-link-exact-active
-          color rgb(37,185,203)
-        i
-          display block
-          margin 5px 0 0 0
-        span
-          display block
-          height 25px
-          line-height 18px
+          background-image: url(../../../static/img/repeat-x.png),url(../../../static/img/repeat-x.png),url(../../../static/img/repeat-x.png),url(../../../static/img/repeat-x.png)
+          background-repeat: repeat-x, repeat-y,  repeat-y
+          background-position: left top, left top, right top
+          background-size: auto 1px,auto 1px,auto 1px
+
 
 </style>

@@ -12,6 +12,7 @@ import typepage from '@/views/typepage/typepage'; // 分类页面
 Vue.use(Router);
 export default new Router({
   mode: 'history',
+  linkActiveClass: 'link-active',
   routes: [
     {
       path: '/',

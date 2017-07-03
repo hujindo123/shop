@@ -71,7 +71,6 @@
     .shop_list
       width 100%
       box-sizing border-box
-      padding 0 32px
       .shop_list_wrapper
         width 100%
         margin-top 10px
