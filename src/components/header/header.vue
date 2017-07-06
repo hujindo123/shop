@@ -42,60 +42,60 @@
 <style lang="stylus" rel="stylesheet/stylus">
   .header
     width 100%
-    height 44px
+    height 4.4rem
     position fixed
     display flex
     top 0
     left 0
     box-sizing border-box
-    padding 4px 0
+    padding 0.4rem 0
     background url("bg.png") 0 0 repeat-x
     background-size contain
     z-index 3000
-    line-height 38px
+    line-height 3.8rem
     overflow hidden
     flex-flow row nowrap
     .icon-back, .icon-search
-      height 38px
-      line-height 38px
+      height 3.8rem
+      line-height 3.8rem
       color #fff
       z-index 3000
       position relative
     .icon-back
-      width 36px
-      flex 0 0 36px
+      width 3.6rem
+      flex 0 0 3.6rem
       text-align right
-      font-size 25px
+      font-size 2.5rem
     .icon-search
-      width 38px
-      flex 0 0 38px
+      width 3.8rem
+      flex 0 0 3.8rem
       text-align left
-      font-size 22px
+      font-size 2.2rem
     .header-center
       width 100%
       text-align center
       color #fff
-      font-size 17px
+      font-size 1.7rem
       position relative
       z-index 1000
     .zhanweifu
-      width 38px
+      width 3.8rem
     .header-logo
       flex-grow 1
       background url("./logo.png") center center no-repeat
       background-size contain
     .search_input
-      padding 0 24px
+      padding 0 2.4rem
       flex-grow 1
       input
         vertical-align top
         width 100%
         box-sizing border-box
         padding-left 0.5em
-        height 28px
-        line-height 25px
-        font-size 15px
-        margin-top 4px
+        height 2.8rem
+        line-height 2.5rem
+        font-size 1.5rem
+        margin-top 0.4rem
         border-radius 5px
         outline none
 

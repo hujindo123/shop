@@ -53,34 +53,34 @@
     position absolute
     width 100%
     height 100%
-    top 44px
+    top 4.4rem
     .desc
       font-size 0
-      padding 10px 15px 18px 15px
+      padding 1rem 1.5rem 1.8rem 1.5rem
       background url("../../../static/img/repeat-x.png") left top repeat-x
       background-size 0.1rem 0.1rem
       .details_type
-        font-size 14px
+        font-size 1.4rem
         color rgb(128, 128, 128)
       .details_title
-        margin-top 8px
-        font-size 16px
+        margin-top 0.8rem
+        font-size 1.6rem
         color rgb(26, 26, 26)
         line-height 1.9
       .details_price
-        height 24px
-        font-size 16px
-        line-height 25px
+        height 2.4rem
+        font-size 1.6rem
+        line-height 2.5rem
         color rgb(235, 66, 52)
-        margin-top 10px
+        margin-top 1rem
         position relative
         .details_num
-          margin-left 20px
-          font-size 14px
+          margin-left 2rem
+          font-size 1.4rem
           color rgb(128, 128, 128)
         .details_add
-          width 24px
-          height 24px
+          width 2.4rem
+          height 2.4rem
           position absolute
           right 0
           background url("../../../static/img/add.png") center center no-repeat
@@ -89,9 +89,9 @@
       width 100%
       position relative
       .details_h1
-        padding 14px 0
+        padding 1.4rem 0
         text-align center
-        font-size 14px
+        font-size 1.4rem
         color rgb(51, 51, 51)
         background #f5f5f5
 </style>

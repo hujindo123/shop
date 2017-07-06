@@ -52,10 +52,10 @@
 <style lang="stylus" rel="stylesheet/stylus">
   .goods-details
     position relative
-    padding 20px 15px
+    padding 6.4rem 1.5rem
     .shop_sp
-      width 70px
-      height 70px
+      width 7rem
+      height 7rem
       margin 0 auto
       img
         width 100%
@@ -63,33 +63,33 @@
         border-radius 5px
     .shop_name
       width 100%
-      font-size 14px
+      font-size 1.4rem
       color rgb(26, 26, 26)
       line-height 1.8
-      margin-top 8px
+      margin-top 0.8rem
       text-align center
     .shop_list
       width 100%
       box-sizing border-box
       .shop_list_wrapper
         width 100%
-        margin-top 10px
+        margin-top 1rem
         display flex
         flex-wrap wrap
-        font-size 14px
+        font-size 1.4rem
         color #808080
         .shop_list_left
-          width 95px
-          flex 0 0 95px
-          font-size 14px
-          line-height 16px
+          width 9.5rem
+          flex 0 0 9.5rem
+          font-size 1.4rem
+          line-height 1.6rem
           i
-            font-size 16px
+            font-size 1.6rem
             vertical-align middle
             color rgb(37, 185, 203)
             &.icon-time
-              font-size 20px
+              font-size 2rem
         .shop_list_right
           flex 1
-          line-height 16px
+          line-height 1.6rem
 </style>

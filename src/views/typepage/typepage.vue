@@ -20,5 +20,5 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
   .type-list
-    padding-top 44px
+    padding-top 4.4rem
 </style>

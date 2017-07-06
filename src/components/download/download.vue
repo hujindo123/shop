@@ -16,7 +16,7 @@
     left 0
     background #e85b4d
     color rgb(245, 245, 245)
-    font-size 16px
+    font-size 1.6rem
     text-align center
-    line-height 50px
+    line-height 5rem
 </style>

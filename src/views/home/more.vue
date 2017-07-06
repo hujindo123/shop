@@ -51,21 +51,21 @@
   .more_list
     width 100%
     position relative
-    top 44px
+    top 4.4rem
     font-size 0
     .more_item
       width 25%
       display inline-block
-      padding 20px 0
-      font-size 12px
+      padding 2rem 0
+      font-size 1.2rem
       text-align center
       background-image url("../../../static/img/repeat-x.png") , url("../../../static/img/repeat-x.png")
       background-repeat repeat-x, repeat-y
       background-position 0 bottom, right top
       background-size auto 0.1rem, auto 0.1rem
       img
-        width 35px
-        height 35px
+        width 3.5rem
+        height 3.5rem
         display inline-block
-        margin-bottom 10px
+        margin-bottom 1rem
 </style>

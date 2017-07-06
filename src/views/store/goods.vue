@@ -269,12 +269,12 @@
     width 100%
     z-index 1
     position absolute
-    top 40px
+    top 4rem
     height 100%
     display flex
     .my_scroller_1
-      width 85px
-      flex 0 0 85px
+      width 8.5rem
+      flex 0 0 8.5rem
       box-sizing border-box
       height 100%
       position relative
@@ -282,8 +282,8 @@
         position relative
         text-align center
         color rgb(51, 51, 51)
-        padding 8px 0
-        font-size 14px
+        padding 0.8rem 0
+        font-size 1.4rem
         background-color #f4f4f4
         &::after
           width 100%
@@ -298,53 +298,53 @@
           background-size 0.2rem 0.2rem
         span
           display block
-          padding 7px 0
-          border-left 2px solid transparent
+          padding 0.7rem 0
+          border-left 0.2rem solid transparent
         &.good_active
           background #fff
           span
-            border-left 2px solid rgb(37, 185, 203)
+            border-left 0.2rem solid rgb(37, 185, 203)
 
     .my_scroller_2
       flex 1
       height 100%
       position relative
       .right_row
-        padding 13px 10px
+        padding 1.3rem 1rem
         display flex
         .right_row_left
-          width 62px
-          height 62px
-          flex 0 0 62px
+          width 6.2rem
+          height 6.2rem
+          flex 0 0 6.2rem
           img
             width 100%
-          display block
+            display block
         .right_row_right
           flex 1
-          min-width 100px
+          min-width 10rem
           font-size 0
-          padding-left 10px
+          padding-left 1rem
           .right_row_right_h
             overflow hidden
             text-overflow ellipsis
             white-space nowrap
-            font-size 14px
+            font-size 1.4rem
             color rgb(128, 128, 128)
           .row_cun
-            font-size 12px
-            margin-top 11px
+            font-size 1.2rem
+            margin-top 1.1rem
             color rgb(128, 128, 128)
           .row_price
             color rgb(232, 93, 80)
-            margin-top 13px
-            font-size 14px
+            margin-top 1.3rem
+            font-size 1.4rem
             position relative
             .details_add
-              width 24px
-              height 24px
+              width 2.4rem
+              height 2.4rem
               position absolute
               right 0
-              bottom 0
+              bottom -3px
               background url("../../../static/img/add.png") center center no-repeat
               background-size contain
 

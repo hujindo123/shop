@@ -68,7 +68,7 @@
 
   .footer
     width 100%
-    height 50px
+    height 5rem
     display flex
     position fixed
     bottom 0
@@ -85,18 +85,18 @@
       a
         display block
         width 100%
-        height 50px
+        height 5rem
       .link-active
         span
           color #25b9cb
       span
         display block
-        margin-top 3px
-        font-size 13px
+        margin-top 0.3rem
+        font-size 1.3rem
       .img
-        width 25px
-        height 25px
-        margin 5px auto 0
+        width 2.5rem
+        height 2.5rem
+        margin 0.5rem auto 0
         display inline-block
       .home
         .home-img
@@ -124,12 +124,12 @@
             background-size contain
       .about
         width 100%
-        height 150px
+        height 15rem
         position absolute
         background #f5f5f5
-        top -150px
-        font-size 13px
-        line-height 50px
+        top -15rem
+        font-size 1.3rem
+        line-height 5rem
         &.list-fade-enter-active, list-fade-leave-active
           transition all 0.2s ease
         &.list-fade-enter, list-fade-leave-active
