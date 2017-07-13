@@ -16,13 +16,13 @@
          <transition name="list-fade">
            <ul class="about" v-if="listShow">
              <li class="list-li">
-               <router-link to="/download">下载APP</router-link>
+               <router-link to="/download">使用说明</router-link>
              </li>
              <li class="list-li">
-               <router-link to="/b">ABCD</router-link>
+               <router-link to="/b">加盟方式</router-link>
              </li>
              <li class="list-li">
-               <router-link to="/c">ABCE</router-link>
+               <router-link to="/c">APP下载</router-link>
              </li>
            </ul>
          </transition>

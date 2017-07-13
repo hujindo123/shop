@@ -25,6 +25,7 @@
           {name: '美食', img: 'static/img/list-icon/food.png'},
           {name: '超市百货', img: 'static/img/list-icon/shop.png'},
           {name: '休闲娱乐', img: 'static/img/list-icon/fire.png'},
+          {name: '生活服务', img: 'static/img/list-icon/life.png'},
           {name: '生鲜蔬果', img: 'static/img/list-icon/shucai.png'},
           {name: '丽人', img: 'static/img/list-icon/woman.png'},
           {name: '医疗', img: 'static/img/list-icon/yiliao.png'},
