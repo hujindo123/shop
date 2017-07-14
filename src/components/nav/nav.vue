@@ -1,11 +1,11 @@
 <template>
   <div class="store">
-    <div class="store_top">
-      <router-link class="store_h goods" to="/goods">
+    <div class="store_top" :id="id">
+      <router-link class="store_h goods" :to="{ path: '/goods/'+this.$route.params.id+'/'+encodeURI(this.$route.params.name)}">
         商品
         <span class="store_line"></span>
       </router-link>
-      <router-link class="store_h goodsDetails" to="/goodsDetails">
+      <router-link class="store_h goodsDetails" :to="{ path: '/goodsDetails/'+this.$route.params.id+'/'+encodeURI(this.$route.params.name)}">
         店铺详情
         <span class="store_line"></span>
       </router-link>
@@ -14,7 +14,17 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
-  export default {};
+  export default {
+    props: {
+      id: {
+        type: String,
+        default: ''
+      }
+    },
+    created () {
+      console.log(this.id);
+    }
+  };
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">

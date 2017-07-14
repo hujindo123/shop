@@ -1,20 +1,24 @@
 <template>
   <ul class="list">
     <li class="list_item">
-      <router-link to="/details">
-        <div class="list_item_wrapper">
-          <div class="list_item_left">
-            <img src="../../../static/img/list-icon/fire.png" alt="">
-          </div>
-          <div class="list_item_right">
-            <div class="line"><i class=" icon icon_pu"></i><span class="icon_title">红旗超市</span></div>
-            <div class="line"><i class=" icon icon_shop"></i><i class=" icon icon_car"></i><span class="icon_time">06:00-24:00 | ￥0.0.1元起送</span>
+      <div class="list_item_wrapper">
+        <template v-if="list" v-for="(item, index) in list">
+          <router-link :to="{path:'/store/'+item.id+'/'+encodeURI(item.name)}" class="a">
+            <div class="list_item_left">
+              <img :src="/api/+item.logo" alt="">
             </div>
-            <div class="line last"><span class="icon_time">东风路767号东宝大厦21楼</span></div>
-         <!--   <div class="list_m">13m</div> -->
-          </div>
-        </div>
-      </router-link>
+            <div class="list_item_right">
+              <div class="line"><i class=" icon icon_pu"></i><span class="icon_title">{{item.name}}</span></div>
+              <div class="line"><i class=" icon icon_shop"></i><i class=" icon icon_car"></i><span
+                class="icon_time">{{item.datestr}} | ￥{{item.delivery_fee}}</span>
+              </div>
+              <div class="line last"><span class="icon_time">{{item.addr}}</span></div>
+              <!--   <div class="list_m">13m</div> -->
+            </div>
+          </router-link>
+        </template>
+      </div>
+      <!-- 推荐 -->
       <div v-if="tj">
         <router-link to="/details" class="tj">
           <div class="tj_line">
@@ -43,6 +47,10 @@
 <script type="text/ecmascript-6">
   export default {
     props: {
+      list: {
+        type: Array,
+        default: []
+      },
       line: {
         type: Boolean,
         default: true
@@ -77,54 +85,57 @@
         padding 1.5rem 1rem
         display flex
         overflow hidden
-        .list_item_left
-          width 7rem
-          height 7rem
-          flex 0 0 7rem
-          overflow hidden
-          img
-            width 100%
-        .list_item_right
+        .a
           flex 1
-          box-sizing border-box
-          padding-left 1rem
-          overflow hidden
-          .line
-            height 1.8rem
-            line-height 1.8rem
-            padding-bottom 0.8rem
-            text-overflow ellipsis
-            white-space nowrap
+          display flex
+          .list_item_left
+            width 7rem
+            height 7rem
+            flex 0 0 7rem
             overflow hidden
-            &.last
-              padding-bottom 0
-            .icon
-              width 1.8rem
+            img
+              width 100%
+          .list_item_right
+            flex 1
+            box-sizing border-box
+            padding-left 1rem
+            overflow hidden
+            .line
               height 1.8rem
-              padding-left 0.5rem
-              display inline-block
-            .icon_pu
-              background url("../../../static/img/icon_shop.png") 0 0 no-repeat
-              background-size contain
-            .icon_shop
-              background url("../../../static/img/icon_pu.png") 0 0 no-repeat
-              background-size contain
-            .icon_car
-              background url("../../../static/img/icon_car.png") 0 0 no-repeat
-              background-size contain
-            .icon_title
-              font-size 1.6rem
-              color rgb(25, 25, 25)
-              font-weight 400
-              vertical-align top
-              display inline-block
-              margin-top 0.2px
-            .icon_time
-              position relative
-              font-size 1.3rem
-              color rgb(102, 102, 102)
-              font-weight 400
-              vertical-align top
+              line-height 1.8rem
+              padding-bottom 0.8rem
+              text-overflow ellipsis
+              white-space nowrap
+              overflow hidden
+              &.last
+                padding-bottom 0
+              .icon
+                width 1.8rem
+                height 1.8rem
+                padding-left 0.5rem
+                display inline-block
+              .icon_pu
+                background url("../../../static/img/icon_shop.png") 0 0 no-repeat
+                background-size contain
+              .icon_shop
+                background url("../../../static/img/icon_pu.png") 0 0 no-repeat
+                background-size contain
+              .icon_car
+                background url("../../../static/img/icon_car.png") 0 0 no-repeat
+                background-size contain
+              .icon_title
+                font-size 1.6rem
+                color rgb(25, 25, 25)
+                font-weight 400
+                vertical-align top
+                display inline-block
+                margin-top 0.2px
+              .icon_time
+                position relative
+                font-size 1.3rem
+                color rgb(102, 102, 102)
+                font-weight 400
+                vertical-align top
       /*  .list_m
           position absolute
           right 12px

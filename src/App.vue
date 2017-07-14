@@ -12,6 +12,7 @@ export default {
 
 <style lang="stylus" rel="stylesheet/stylus">
   @import "./assets/css/main.styl"
+  @import "../static/reset.css"
   #app
     width 100%
     height 100%

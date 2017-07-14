@@ -3,11 +3,17 @@
     <v-header :title="title" :type="1"></v-header>
     <scroller>
       <div class="more_list">
-        <template v-for="(x, index) in list">
-          <router-link :to="{path:'/typepage',query:{name: x.name}}" class="more_item">
-            <img :src="x.img">
-            <p class="pic-t">{{x.name}}</p>
+        <template v-if="category">
+          <router-link :to="{path:'/typepage',query:{name: '全部分类', cateid: 0}}"  class="more_item">
+            <img src="../../../static/img/list-icon/more.png">
+            <p class="pic-t">更多分类</p>
           </router-link>
+          <template  v-for="(x, index) in category">
+            <router-link :to="{path:'/typepage',query:{name: x.name, cateid: x.id}}" class="more_item">
+              <img :src="'../../../static/img/list-icon/'+x.id+'.png'">
+              <p class="pic-t">{{x.name}}</p>
+            </router-link>
+          </template>
         </template>
       </div>
     </scroller>
@@ -17,30 +23,24 @@
 
 <script type="text/ecmascript-6">
   import header from '@/components/header/header';
+  const ERR_OK = 1;
   export default {
     data () {
       return {
-        list: [
-          {name: '全部分类', img: 'static/img/list-icon/more.png'},
-          {name: '美食', img: 'static/img/list-icon/food.png'},
-          {name: '超市百货', img: 'static/img/list-icon/shop.png'},
-          {name: '休闲娱乐', img: 'static/img/list-icon/fire.png'},
-          {name: '生活服务', img: 'static/img/list-icon/life.png'},
-          {name: '生鲜蔬果', img: 'static/img/list-icon/shucai.png'},
-          {name: '丽人', img: 'static/img/list-icon/woman.png'},
-          {name: '医疗', img: 'static/img/list-icon/yiliao.png'},
-          {name: '爱车', img: 'static/img/list-icon/car.png'},
-          {name: '五金配饰', img: 'static/img/list-icon/wujin.png'},
-          {name: '宠物专区', img: 'static/img/list-icon/chongwu.png'},
-          {name: '家政服务', img: 'static/img/list-icon/jiazheng.png'},
-          {name: '电子数码', img: 'static/img/list-icon/shuma.png'},
-          {name: '电器类', img: 'static/img/list-icon/dianqi.png'},
-          {name: '装修装饰', img: 'static/img/list-icon/zhuangxiu.png'},
-          {name: '钟表类', img: 'static/img/list-icon/zhongbiao.png'},
-          {name: '鲜花绿植', img: 'static/img/list-icon/xianhua.png'}
-        ],
-        title: '商铺分类'
+        category: '',
+        title: '商铺分类',
+        empty: ''
       };
+    },
+    created () {
+      this.$axios.get('/api/index/index/category').then((response) => {
+        response = response.data;
+        if (response.code === ERR_OK) {
+          this.category = response.data;
+        } else {
+          this.empty = response.msg;
+        }
+      });
     },
     components: {
       'vHeader': header
@@ -54,6 +54,7 @@
     position relative
     top 4.4rem
     font-size 0
+    padding-bottom: 5rem;
     .more_item
       width 25%
       display inline-block

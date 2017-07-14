@@ -5,14 +5,23 @@
       <scroller>
         <div class="nav">
           <div class="items">
-            <template  v-for="(x, index) in list">
-              <router-link :to="{path:x.name == '更多分类' ?'/more':'/typepage',query:{name: x.name}}" class="item"><img :src="x.img">
-                <p class="pic-t">{{x.name}}</p></router-link>
+            <template v-if="category">
+              <template v-for="(x, index) in category">
+                <router-link :to="{path:'/typepage',query:{cateid: x.id}}" class="item">
+                  <img :src="'../../../static/img/list-icon/'+x.id+'.png'">
+                  <p class="pic-t">{{x.name}}</p>
+                </router-link>
+              </template>
+              <router-link :to="{path:'/more',}" class="item">
+                <img src="../../../static/img/list-icon/more.png">
+                <p class="pic-t">更多分类</p>
+              </router-link>
             </template>
+
           </div>
         </div>
         <v-swiper :banner="banner"></v-swiper>
-        <v-list :line="false"></v-list>
+        <v-list :line="false" :list="list" v-if="list.length > 0"></v-list>
       </scroller>
     </div>
     <v-footer></v-footer>
@@ -24,30 +33,36 @@
   import footer from '@/components/footer/footer';
   import swiper from '@/components/swiper/swiper';
   import list from '@/components/list/list';
-  const ERR_OK = 200;
+  const ERR_OK = 1;
   export default {
-    created () {
-      this.$axios.get('/api/banner').then((response) => {
-        response = response.data;
-        if (response.code === ERR_OK) {
-          this.banner = response;
-        }
-      });
-    },
     data () {
       return {
-        list: [
-          {name: '美食', img: 'static/img/list-icon/food.png'},
-          {name: '超市百货', img: 'static/img/list-icon/shop.png'},
-          {name: '休闲娱乐', img: 'static/img/list-icon/fire.png'},
-          {name: '生鲜蔬果', img: 'static/img/list-icon/shucai.png'},
-          {name: '丽人', img: 'static/img/list-icon/woman.png'},
-          {name: '医疗', img: 'static/img/list-icon/yiliao.png'},
-          {name: '爱车', img: 'static/img/list-icon/car.png'},
-          {name: '更多分类', img: 'static/img/list-icon/more.png'}
-        ],
-        banner: {}
+        category: '',
+        banner: [],
+        list: []
       };
+    },
+    created () {
+      /* 分类列表 */
+      this.$axios.get('/api/index/index/category').then((response) => {
+        response = response.data;
+        if (response.code === ERR_OK) {
+          this.category = response.data.slice(0, 7);
+        }
+      });
+      /* banner */
+      this.$axios.get('/api/index/index/slideshow').then((response) => {
+        response = response.data;
+        if (response.code === ERR_OK) {
+          this.banner = response.data;
+        }
+      });
+      this.$axios.get('/api/index/index/homestores').then((response) => {
+        response = response.data;
+        if (response.code === ERR_OK) {
+          this.list = response.data;
+        }
+      });
     },
     components: {
       'vHeader': header,

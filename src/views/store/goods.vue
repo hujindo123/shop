@@ -2,27 +2,9 @@
   <div class="scroll">
     <scroller ref="my_scroller_1" class="my_scroller_1">
       <div class="left_row" v-for="(item, index) in items1" :class="{good_active: index === selected }"
-           @click="goodsActive(index)"><span>粮油副食</span>
+           @click="goodsActive(index)">
+        <span>{{item.name}}</span>
       </div>
-      <!--  <div class="left_row">食品饮料</div>
-        <div class="left_row">生鲜水果</div>
-        <div class="left_row">进口商品</div>
-        <div class="left_row">母婴用品</div>
-        <div class="left_row">粮油副食</div>
-        <div class="left_row">食品饮料</div>
-        <div class="left_row">生鲜水果</div>
-        <div class="left_row">进口商品</div>
-        <div class="left_row">母婴用品</div>
-        <div class="left_row">粮油副食</div>
-        <div class="left_row">食品饮料</div>
-        <div class="left_row">生鲜水果</div>
-        <div class="left_row">进口商品</div>
-        <div class="left_row">母婴用品</div>
-        <div class="left_row">粮油副食</div>
-        <div class="left_row">食品饮料</div>
-        <div class="left_row">生鲜水果</div>
-        <div class="left_row">进口商品</div>
-        <div class="left_row">母婴用品</div>-->
       <div class="" style="width: 100%;height: 150px"></div>
     </scroller>
     <scroller style="" ref="my_scroller_2" class="my_scroller_2">
@@ -46,166 +28,6 @@
           <div class="row_price">￥15.00<i class="details_add" @click="show=true"></i></div>
         </div>
       </div>
-      <div class="right_row">
-        <div class="right_row_left">
-          <img src="../../../static/img/icon_shop.png" alt="">
-        </div>
-        <div class="right_row_right">
-          <div class="right_row_right_h">德克士德克士全家桶100G全家桶100G/桶</div>
-          <div class="row_cun">库存（456）</div>
-          <div class="row_price">￥15.00<i class="details_add" @click="show=true"></i></div>
-        </div>
-      </div>
-      <div class="right_row">
-        <div class="right_row_left">
-          <img src="../../../static/img/icon_shop.png" alt="">
-        </div>
-        <div class="right_row_right">
-          <div class="right_row_right_h">德克士德克士全家桶100G全家桶100G/桶</div>
-          <div class="row_cun">库存（456）</div>
-          <div class="row_price">￥15.00<i class="details_add" @click="show=true"></i></div>
-        </div>
-      </div>
-      <div class="right_row">
-        <div class="right_row_left">
-          <img src="../../../static/img/icon_shop.png" alt="">
-        </div>
-        <div class="right_row_right">
-          <div class="right_row_right_h">德克士德克士全家桶100G全家桶100G/桶</div>
-          <div class="row_cun">库存（456）</div>
-          <div class="row_price">￥15.00<i class="details_add" @click="show=true"></i></div>
-        </div>
-      </div>
-      <div class="right_row">
-        <div class="right_row_left">
-          <img src="../../../static/img/icon_shop.png" alt="">
-        </div>
-        <div class="right_row_right">
-          <div class="right_row_right_h">德克士德克士全家桶100G全家桶100G/桶</div>
-          <div class="row_cun">库存（456）</div>
-          <div class="row_price">￥15.00<i class="details_add" @click="show=true"></i></div>
-        </div>
-      </div>
-      <div class="right_row">
-        <div class="right_row_left">
-          <img src="../../../static/img/icon_shop.png" alt="">
-        </div>
-        <div class="right_row_right">
-          <div class="right_row_right_h">德克士德克士全家桶100G全家桶100G/桶</div>
-          <div class="row_cun">库存（456）</div>
-          <div class="row_price">￥15.00<i class="details_add" @click="show=true"></i></div>
-        </div>
-      </div>
-      <div class="right_row">
-        <div class="right_row_left">
-          <img src="../../../static/img/icon_shop.png" alt="">
-        </div>
-        <div class="right_row_right">
-          <div class="right_row_right_h">德克士德克士全家桶100G全家桶100G/桶</div>
-          <div class="row_cun">库存（456）</div>
-          <div class="row_price">￥15.00<i class="details_add" @click="show=true"></i></div>
-        </div>
-      </div>
-      <div class="right_row">
-        <div class="right_row_left">
-          <img src="../../../static/img/icon_shop.png" alt="">
-        </div>
-        <div class="right_row_right">
-          <div class="right_row_right_h">德克士德克士全家桶100G全家桶100G/桶</div>
-          <div class="row_cun">库存（456）</div>
-          <div class="row_price">￥15.00<i class="details_add" @click="show=true"></i></div>
-        </div>
-      </div>
-      <div class="right_row">
-        <div class="right_row_left">
-          <img src="../../../static/img/icon_shop.png" alt="">
-        </div>
-        <div class="right_row_right">
-          <div class="right_row_right_h">德克士德克士全家桶100G全家桶100G/桶</div>
-          <div class="row_cun">库存（456）</div>
-          <div class="row_price">￥15.00<i class="details_add" @click="show=true"></i></div>
-        </div>
-      </div>
-      <div class="right_row">
-        <div class="right_row_left">
-          <img src="../../../static/img/icon_shop.png" alt="">
-        </div>
-        <div class="right_row_right">
-          <div class="right_row_right_h">德克士德克士全家桶100G全家桶100G/桶</div>
-          <div class="row_cun">库存（456）</div>
-          <div class="row_price">￥15.00<i class="details_add" @click="show=true"></i></div>
-        </div>
-      </div>
-      <div class="right_row">
-        <div class="right_row_left">
-          <img src="../../../static/img/icon_shop.png" alt="">
-        </div>
-        <div class="right_row_right">
-          <div class="right_row_right_h">德克士德克士全家桶100G全家桶100G/桶</div>
-          <div class="row_cun">库存（456）</div>
-          <div class="row_price">￥15.00<i class="details_add" @click="show=true"></i></div>
-        </div>
-      </div>
-      <div class="right_row">
-        <div class="right_row_left">
-          <img src="../../../static/img/icon_shop.png" alt="">
-        </div>
-        <div class="right_row_right">
-          <div class="right_row_right_h">德克士德克士全家桶100G全家桶100G/桶</div>
-          <div class="row_cun">库存（456）</div>
-          <div class="row_price">￥15.00<i class="details_add" @click="show=true"></i></div>
-        </div>
-      </div>
-      <div class="right_row">
-        <div class="right_row_left">
-          <img src="../../../static/img/icon_shop.png" alt="">
-        </div>
-        <div class="right_row_right">
-          <div class="right_row_right_h">德克士德克士全家桶100G全家桶100G/桶</div>
-          <div class="row_cun">库存（456）</div>
-          <div class="row_price">￥15.00<i class="details_add" @click="show=true"></i></div>
-        </div>
-      </div>
-      <div class="right_row">
-        <div class="right_row_left">
-          <img src="../../../static/img/icon_shop.png" alt="">
-        </div>
-        <div class="right_row_right">
-          <div class="right_row_right_h">德克士德克士全家桶100G全家桶100G/桶</div>
-          <div class="row_cun">库存（456）</div>
-          <div class="row_price">￥15.00<i class="details_add" @click="show=true"></i></div>
-        </div>
-      </div>
-      <div class="right_row">
-        <div class="right_row_left">
-          <img src="../../../static/img/icon_shop.png" alt="">
-        </div>
-        <div class="right_row_right">
-          <div class="right_row_right_h">德克士德克士全家桶100G全家桶100G/桶</div>
-          <div class="row_cun">库存（456）</div>
-          <div class="row_price">￥15.00<i class="details_add" @click="show=true"></i></div>
-        </div>
-      </div>
-      <div class="right_row">
-        <div class="right_row_left">
-          <img src="../../../static/img/icon_shop.png" alt="">
-        </div>
-        <div class="right_row_right">
-          <div class="right_row_right_h">德克士德克士全家桶100G全家桶100G/桶</div>
-          <div class="row_cun">库存（456）</div>
-          <div class="row_price">￥15.00<i class="details_add" @click="show=true"></i></div>
-        </div>
-      </div>
-      <div class="right_row">
-        <div class="right_row_left">
-          <img src="../../../static/img/icon_shop.png" alt="">
-        </div>
-        <div class="right_row_right">
-          <div class="right_row_right_h">德克士德克士全家桶100G全家桶100G/桶</div>
-          <div class="row_cun">库存（456）</div>
-          <div class="row_price">￥15.00<i class="details_add" @click="show=true"></i></div>
-        </div>
-      </div>
       <div class="" style="width: 100%;height: 150px"></div>
     </scroller>
     <v-download v-show="show"></v-download>
@@ -215,6 +37,7 @@
 <script type="text/ecmascript-6">
   import nav from '@/components/nav/nav';
   import download from '@/components/download/download';
+  const ERR_OK = 1;
   export default {
     data () {
       return {
@@ -224,13 +47,28 @@
         items2: []
       };
     },
-    mounted () {
-      for (let i = 1; i <= 20; i++) {
+    props: {
+      id: {
+        type: String,
+        default: ''
+      }
+    },
+    created () {
+      /* 左边导航数据 */
+      this.$axios.get('/api/index/index/storecate/id/' + this.$route.params.id).then((response) => {
+        response = response.data;
+        if (response.code === ERR_OK) {
+          this.items1 = response.data;
+        } else {
+          this.empty = response.msg;
+        }
+      });
+/*      for (let i = 1; i <= 20; i++) {
         this.items1.push(i);
         this.items2.push(i + ' - Scroller 2');
       }
       this.top = [1, 1];
-      this.bottom = [20, 20];
+      this.bottom = [20, 20]; */
     },
     methods: {
       goodsActive (index) {

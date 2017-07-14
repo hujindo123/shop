@@ -1,8 +1,8 @@
 <template>
   <swiper :options="swiperOption" ref="mySwiper" >
     <!-- slides -->
-    <swiper-slide class="swiper-slide" :key="index" v-for="(item, index) in banner.banners">
-      <img :src="item.pic" alt="">
+    <swiper-slide class="swiper-slide" :key="index" v-for="(item, index) in banner">
+      <img :src="/api/+item.url" alt="">
     </swiper-slide>
     <!-- Optional controls -->
     <div class="swiper-pagination" slot="pagination"></div>
@@ -14,7 +14,7 @@
   export default {
     props: {
       banner: {
-        type: Object
+        type: Array
       },
       isBanner: {
         type: Boolean

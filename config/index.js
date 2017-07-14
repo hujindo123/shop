@@ -29,7 +29,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://172.16.0.156:3000/',
+        target: 'http://172.16.0.51:80/fastadmin/public',
         changeOrigin: true,
         pathRewrite: {
           '^/api': '/'

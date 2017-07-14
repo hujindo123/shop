@@ -32,16 +32,16 @@ export default new Router({
           component: details
         },
         {
-          path: '/store',
+          path: '/store/:id/:name',
           component: store,
-          redirect: '/goods',
+          redirect: '/goods/:id/:name',
           children: [
             {
-              path: '/goods',
+              path: '/goods/:id/:name',
               component: goods
             },
             {
-              path: '/goodsDetails',
+              path: '/goodsDetails/:id/:name',
               component: goodsDetails
             }
           ]
