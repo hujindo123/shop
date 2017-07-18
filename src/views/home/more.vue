@@ -2,14 +2,16 @@
   <div>
     <v-header :title="title" :type="1"></v-header>
     <scroller>
+      <vue-loading type="bars" style="margin-top: 100px" v-show="loading" color="#25b9cb"
+                   :size="{ width: '50px', height: '50px' }"></vue-loading>
       <div class="more_list">
         <template v-if="category">
-          <router-link :to="{path:'/typepage',query:{name: '全部分类', cateid: 0}}"  class="more_item">
+          <router-link to="/" class="more_item">
             <img src="../../../static/img/list-icon/more.png">
             <p class="pic-t">更多分类</p>
           </router-link>
-          <template  v-for="(x, index) in category">
-            <router-link :to="{path:'/typepage',query:{name: x.name, cateid: x.id}}" class="more_item">
+          <template v-for="(x, index) in category">
+            <router-link :to="{path:'/typepage/'+x.id+'/'+encodeURI(x.name)}" class="more_item">
               <img :src="'../../../static/img/list-icon/'+x.id+'.png'">
               <p class="pic-t">{{x.name}}</p>
             </router-link>
@@ -22,11 +24,13 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import vueLoading from 'vue-loading-template';
   import header from '@/components/header/header';
   const ERR_OK = 1;
   export default {
     data () {
       return {
+        loading: true,
         category: '',
         title: '商铺分类',
         empty: ''
@@ -35,6 +39,7 @@
     created () {
       this.$axios.get('/index/index/category').then((response) => {
         response = response.data;
+        this.loading = false;
         if (response.code === ERR_OK) {
           this.category = response.data;
         } else {
@@ -43,6 +48,7 @@
       });
     },
     components: {
+      vueLoading,
       'vHeader': header
     }
   };

@@ -2,6 +2,7 @@
   <div>
     <v-header :type="0"></v-header>
     <div class="main_wrapper">
+      <vue-loading type="bars"  style="margin-top: 150px" v-show="loading" color="#25b9cb" :size="{ width: '50px', height: '50px' }"></vue-loading>
       <scroller>
         <div class="nav">
           <div class="items">
@@ -20,7 +21,7 @@
 
           </div>
         </div>
-        <v-swiper :banner="banner"></v-swiper>
+        <v-swiper :banner="banner" ></v-swiper>
         <v-list :line="false" :list="list" v-if="list.length > 0"></v-list>
       </scroller>
     </div>
@@ -29,6 +30,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import vueLoading from 'vue-loading-template';
   import header from '@/components/header/header';
   import footer from '@/components/footer/footer';
   import swiper from '@/components/swiper/swiper';
@@ -37,6 +39,7 @@
   export default {
     data () {
       return {
+        loading: true,
         category: '',
         banner: [],
         list: []
@@ -53,6 +56,7 @@
       /* banner */
       this.$axios.get('/index/index/slideshow').then((response) => {
         response = response.data;
+        this.loading = false;
         if (response.code === ERR_OK) {
           this.banner = response.data;
         }
@@ -65,6 +69,7 @@
       });
     },
     components: {
+      vueLoading,
       'vHeader': header,
       'v-footer': footer,
       'vSwiper': swiper,

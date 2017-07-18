@@ -1,23 +1,21 @@
 <template>
-  <ul class="list">
-    <li class="list_item">
-      <div class="list_item_wrapper">
-        <template v-if="list" v-for="(item, index) in list">
-          <router-link :to="{path:'/store/'+item.id+'/'+encodeURI(item.name)}" class="a">
-            <div class="list_item_left">
-              <img :src="baseUrl+item.logo" alt="">
+  <div class="list">
+    <div class="list_item">
+      <div class="list_item_wrapper" v-if="list" v-for="(item, index) in list">
+        <router-link :to="{path:'/store/'+item.id+'/'+encodeURI(item.name)}" class="a">
+          <div class="list_item_left">
+            <img :src="baseUrl+item.logo" alt="">
+          </div>
+          <div class="list_item_right">
+            <div class="line"><i class=" icon icon_pu"></i><span class="icon_title">{{item.name}}</span></div>
+            <div class="line"><i class=" icon icon_shop"></i><i class=" icon icon_car"></i><span
+              class="icon_time">{{item.datestr}} | ￥{{item.delivery_fee}}</span>
             </div>
-            <div class="list_item_right">
-              <div class="line"><i class=" icon icon_pu"></i><span class="icon_title">{{item.name}}</span></div>
-              <div class="line"><i class=" icon icon_shop"></i><i class=" icon icon_car"></i><span
-                class="icon_time">{{item.datestr}} | ￥{{item.delivery_fee}}</span>
-              </div>
-              <div class="line last"><span class="icon_time">{{item.addr}}</span></div>
-              <!--   <div class="list_m">13m</div> -->
-            </div>
-          </router-link>
-          <div class="entry-line" v-show="line"></div>
-        </template>
+            <div class="line last"><span class="icon_time">{{item.addr}}</span></div>
+            <!--   <div class="list_m">13m</div> -->
+          </div>
+        </router-link>
+        <div class="entry-line" v-show="line"></div>
       </div>
       <!-- 推荐 -->
       <div v-if="tj">
@@ -40,13 +38,17 @@
           </div>
         </router-link>
       </div>
-
-    </li>
-  </ul>
+    </div>
+  </div>
 </template>
 
 <script type="text/ecmascript-6">
   export default {
+    data () {
+      return {
+        loading: true
+      };
+    },
     props: {
       list: {
         type: Array,
@@ -60,11 +62,6 @@
         type: Boolean, // 底部推荐
         default: false
       }
-    },
-    data () {
-      return {
-        a: true
-      };
     }
   };
 </script>
@@ -177,10 +174,10 @@
       .entry-line
         width 100%
         height 1rem
-        background url('../../../static/img/repeat-x.png') 0 0 repeat-x,url('../../../static/img/repeat-x.png') 0 0 repeat-x
+        background url('../../../static/img/repeat-x.png') 0 0 repeat-x, url('../../../static/img/repeat-x.png') 0 0 repeat-x
         background-size 0.1rem 0.1rem, 0.1rem 0.1rem
         background-position left top, left bottom
-        background-color  #f5f5f5
+        background-color #f5f5f5
 
 
 </style>

@@ -6,7 +6,7 @@
     <router-link to="/search" class="icon-search" v-if="type!=2 && type!=3 "></router-link>
     <span class="zhanweifu" v-if="type==2"></span>
     <div class="search_input" v-if="type==3">
-      <input type="text" ref="input" v-model="inputSearch" placeholder="请输入商品或商铺">
+      <input type="search" ref="input" v-model="inputSearch" placeholder="请输入商品或商铺">
     </div>
     <span class="icon-search" v-if="type==3" ref="search" @click="searchList()"></span>
   </div>
@@ -36,7 +36,7 @@
     methods: {
       // 返回
       back () {
-        history.go(-1);
+        this.$router.back(-1);
       },
       searchList () {
         bus.$emit('tip', this.inputSearch);
