@@ -33,7 +33,7 @@
       };
     },
     created () {
-      this.$axios.get('/api/index/index/category').then((response) => {
+      this.$axios.get('/index/index/category').then((response) => {
         response = response.data;
         if (response.code === ERR_OK) {
           this.category = response.data;

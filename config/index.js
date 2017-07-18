@@ -29,9 +29,9 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://172.16.0.51:80/fastadmin/public',
+        target: 'http://172.16.0.51/fastadmin/public',
         changeOrigin: true,
-        pathRewrite: {
+        pathRewrite: {  // 地址重写 去掉api
           '^/api': '/'
         }
       }

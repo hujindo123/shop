@@ -5,7 +5,7 @@
         <template v-if="list" v-for="(item, index) in list">
           <router-link :to="{path:'/store/'+item.id+'/'+encodeURI(item.name)}" class="a">
             <div class="list_item_left">
-              <img :src="/api/+item.logo" alt="">
+              <img :src="baseUrl+item.logo" alt="">
             </div>
             <div class="list_item_right">
               <div class="line"><i class=" icon icon_pu"></i><span class="icon_title">{{item.name}}</span></div>
@@ -16,6 +16,7 @@
               <!--   <div class="list_m">13m</div> -->
             </div>
           </router-link>
+          <div class="entry-line" v-show="line"></div>
         </template>
       </div>
       <!-- 推荐 -->
@@ -39,7 +40,7 @@
           </div>
         </router-link>
       </div>
-      <div class="entry-line" v-show="line"></div>
+
     </li>
   </ul>
 </template>
@@ -76,18 +77,19 @@
     .list_item
       width 100%
       position relative
-      background url("../../../static/img/repeat-x.png") left bottom repeat-x
-      background-size 0.1rem 0.1rem
-      background-color #fff
       .list_item_wrapper
         width 100%
         box-sizing border-box
-        padding 1.5rem 1rem
         display flex
+        flex-direction column
         overflow hidden
+        background url("../../../static/img/repeat-x.png") left bottom repeat-x
+        background-size 0.1rem 0.1rem
+        background-color #fff
         .a
           flex 1
           display flex
+          padding 1.4rem 1rem
           .list_item_left
             width 7rem
             height 7rem
@@ -175,16 +177,10 @@
       .entry-line
         width 100%
         height 1rem
-        background #f5f5f5
-        &::after
-          width 100%
-          height 0.1rem
-          content ''
-          display block
-          position absolute
-          left 0
-          bottom 0
-          background url('../../../static/img/repeat-x.png') 0 0 repeat-x
-          background-size 0.1rem 0.1rem
+        background url('../../../static/img/repeat-x.png') 0 0 repeat-x,url('../../../static/img/repeat-x.png') 0 0 repeat-x
+        background-size 0.1rem 0.1rem, 0.1rem 0.1rem
+        background-position left top, left bottom
+        background-color  #f5f5f5
+
 
 </style>

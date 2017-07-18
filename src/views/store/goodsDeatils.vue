@@ -1,9 +1,9 @@
 <template>
-  <div class="goods-details">
+  <div class="goods-details" v-if="msg">
     <div class="shop_sp">
-      <img src="../../../static/img/icon_shop.png" alt="">
+      <img :src="this.baseUrl+msg.logo" alt="">
     </div>
-    <div class="shop_name">暖洋洋的西点工作室暖洋洋的西点工作室暖洋洋的西点工作室</div>
+    <div class="shop_name">{{msg.name}}</div>
     <ul class="shop_list">
       <li class="shop_list_wrapper">
         <div class="shop_list_left">
@@ -11,7 +11,7 @@
           营业时间：
         </div>
         <div class="shop_list_right">
-          06:00-24:00
+          {{msg.datestr}}
         </div>
       </li>
       <li class="shop_list_wrapper">
@@ -20,7 +20,7 @@
           联系电话：
         </div>
         <div class="shop_list_right">
-          18227648956
+          {{msg.phone}}
         </div>
       </li>
       <li class="shop_list_wrapper">
@@ -29,7 +29,7 @@
           配送说明：
         </div>
         <div class="shop_list_right">
-          自提
+          {{msg.delivery_fee}}
         </div>
       </li>
       <li class="shop_list_wrapper">
@@ -38,7 +38,7 @@
           门店地址：
         </div>
         <div class="shop_list_right">
-          四川省成都市锦江区牛沙横街2号
+          {{msg.addr}}
         </div>
       </li>
     </ul>
@@ -46,7 +46,22 @@
 </template>
 
 <script type="text/ecmascript-6">
-  export default {};
+  const ERR_OK = 1;
+  export default {
+    data () {
+      return {
+        msg: ''
+      };
+    },
+    created () {
+      this.$axios.get('/index/index/store/id/' + this.$route.params.id).then((response) => {
+        response = response.data;
+        if (response.code === ERR_OK) {
+          this.msg = response.data;
+        }
+      });
+    }
+  };
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">

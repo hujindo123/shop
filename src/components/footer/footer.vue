@@ -41,9 +41,6 @@
         listShow: false
       };
     },
-    created () {
-      console.log(this.$router.path);
-    },
     computed: {
       onfocus () {
         if (this.$route.path === '/download' || this.$route.path === '/b' || this.$route.path === '/c') {

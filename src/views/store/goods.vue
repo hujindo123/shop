@@ -2,7 +2,7 @@
   <div class="scroll">
     <scroller ref="my_scroller_1" class="my_scroller_1">
       <div class="left_row" v-for="(item, index) in items1" :class="{good_active: index === selected }"
-           @click="goodsActive(index)">
+           @click="goodsActive(item.id)">
         <span>{{item.name}}</span>
       </div>
       <div class="" style="width: 100%;height: 150px"></div>
@@ -13,19 +13,9 @@
           <img src="../../../static/img/icon_shop.png" alt="">
         </div>
         <div class="right_row_right">
-          <div class="right_row_right_h">德克士德克士全家桶100G全家桶100G/桶</div>
-          <div class="row_cun">库存（456） {{ item }}</div>
-          <div class="row_price">￥15.00<i class="details_add" @click="show=true"></i></div>
-        </div>
-      </div>
-      <div class="right_row">
-        <div class="right_row_left">
-          <img src="../../../static/img/icon_shop.png" alt="">
-        </div>
-        <div class="right_row_right">
-          <div class="right_row_right_h">德克士德克士全家桶100G全家桶100G/桶</div>
-          <div class="row_cun">库存（456）</div>
-          <div class="row_price">￥15.00<i class="details_add" @click="show=true"></i></div>
+          <div class="right_row_right_h">{{item.name}}/{{item.unit}}</div>
+          <div class="row_cun">库存（{{ item.nums }}） </div>
+          <div class="row_price">￥{{item.price}}<i class="details_add" @click="show=true"></i></div>
         </div>
       </div>
       <div class="" style="width: 100%;height: 150px"></div>
@@ -47,30 +37,40 @@
         items2: []
       };
     },
-    props: {
-      id: {
-        type: String,
-        default: ''
-      }
-    },
     created () {
-      /* 左边导航数据 */
-      this.$axios.get('/api/index/index/storecate/id/' + this.$route.params.id).then((response) => {
-        response = response.data;
-        if (response.code === ERR_OK) {
-          this.items1 = response.data;
-        } else {
-          this.empty = response.msg;
-        }
-      });
-/*      for (let i = 1; i <= 20; i++) {
-        this.items1.push(i);
-        this.items2.push(i + ' - Scroller 2');
-      }
-      this.top = [1, 1];
-      this.bottom = [20, 20]; */
+      this.getLeftData();
+      /*      for (let i = 1; i <= 20; i++) {
+       this.items1.push(i);
+       this.items2.push(i + ' - Scroller 2');
+       }
+       this.top = [1, 1];
+       this.bottom = [20, 20]; */
     },
     methods: {
+      /* 左边导航数据 */
+      getLeftData () {
+        this.$axios.get('/index/index/storecate/id/' + this.$route.params.id).then((response) => {
+          response = response.data;
+          if (response.code === ERR_OK) {
+            this.items1 = response.data;
+            console.log(this.items1);
+            this.getRight(response.data[0].id);
+          } else {
+            this.empty = response.msg;
+          }
+        });
+      },
+      getRight (index) {
+        this.$axios.get('/index/index/goodslist/sid/' + this.$route.params.id + '/cid/' + index).then((response) => {
+          response = response.data;
+          if (response.code === ERR_OK) {
+            debugger;
+            this.items2 = response.data;
+          } else {
+            this.empty = response.msg;
+          }
+        });
+      },
       goodsActive (index) {
         this.selected = index;
       },
@@ -167,7 +167,7 @@
             text-overflow ellipsis
             white-space nowrap
             font-size 1.4rem
-            color rgb(128, 128, 128)
+            color rgb(51, 51, 51)
           .row_cun
             font-size 1.2rem
             margin-top 1.1rem

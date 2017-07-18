@@ -7,7 +7,7 @@
           <div class="items">
             <template v-if="category">
               <template v-for="(x, index) in category">
-                <router-link :to="{path:'/typepage',query:{cateid: x.id}}" class="item">
+                <router-link :to="{path:'/typepage/'+x.id+'/'+x.name}"  :show="true" class="item">
                   <img :src="'../../../static/img/list-icon/'+x.id+'.png'">
                   <p class="pic-t">{{x.name}}</p>
                 </router-link>
@@ -44,20 +44,20 @@
     },
     created () {
       /* 分类列表 */
-      this.$axios.get('/api/index/index/category').then((response) => {
+      this.$axios.get('/index/index/category').then((response) => {
         response = response.data;
         if (response.code === ERR_OK) {
           this.category = response.data.slice(0, 7);
         }
       });
       /* banner */
-      this.$axios.get('/api/index/index/slideshow').then((response) => {
+      this.$axios.get('/index/index/slideshow').then((response) => {
         response = response.data;
         if (response.code === ERR_OK) {
           this.banner = response.data;
         }
       });
-      this.$axios.get('/api/index/index/homestores').then((response) => {
+      this.$axios.get('/index/index/homestores').then((response) => {
         response = response.data;
         if (response.code === ERR_OK) {
           this.list = response.data;
@@ -79,29 +79,32 @@
     height 100%
     overflow hidden
     position absolute
-    top 4.4rem
-    .nav
-      width 100%
-      box-sizing border-box
-      padding 0 5%
+    box-sizing border-box
+    padding-top 4.4rem
+    ._v-container
       position relative
-      background #fff
-      overflow hidden
-      .items
+      .nav
         width 100%
+        box-sizing border-box
+        padding 0 5%
         position relative
-        text-align center
+        background #fff
         overflow hidden
-        .item
-          width 25%
-          box-sizing border-box
-          float left
-          padding 11px 0
+        .items
+          width 100%
+          position relative
           text-align center
-          img
-            width 3.5rem
-            height 3.5rem
-          .pic-t
-            font-size 1.3rem
-            margin-top 0.9rem
+          overflow hidden
+          .item
+            width 25%
+            box-sizing border-box
+            float left
+            padding 11px 0
+            text-align center
+            img
+              width 3.5rem
+              height 3.5rem
+            .pic-t
+              font-size 1.3rem
+              margin-top 0.9rem
 </style>

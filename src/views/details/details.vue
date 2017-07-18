@@ -3,16 +3,23 @@
     <v-header :title="title" :type="2"></v-header>
     <div class="details">
       <scroller>
-        <v-swiper :banner="banner"></v-swiper>
-        <div class="desc">
-          <div class="details_type"><router-link to="/store">好运办公用品店</router-link></div>
-          <div class="details_title">迷你静电电扇，联想Ari Ever HEllo 13英寸的超波笔记本电脑，黑蓝色可供选择</div>
-          <div class="details_price">￥18300.00<span class="details_num">库存：3</span><i class="details_add" @click="show=true"></i></div>
-        </div>
-        <div class="details_xq">
-          <div class="details_h1">商品详情</div>
-          <div class="details_desc_img"></div>
-        </div>
+        <template v-if="list">
+          <img :src="this.baseUrl+list.mainimg" alt="" style="width: 100%;display: block">
+          <!--<v-swiper :banner="banner"></v-swiper>-->
+          <div class="desc">
+            <div class="details_type">
+              <router-link to="/store">{{list.storename}}</router-link>
+            </div>
+            <div class="details_title">{{list.name}}</div>
+            <div class="details_price">￥{{list.price}}<span class="details_num">库存：{{list.nums}}</span><i
+              class="details_add"
+              @click="show=true"></i></div>
+          </div>
+          <div class="details_xq">
+            <div class="details_h1">商品详情</div>
+            <div class="details_desc_img" ref="child" >{{list.content}}</div>
+          </div>
+        </template>
       </scroller>
     </div>
     <v-download v-show="show"></v-download>
@@ -21,31 +28,42 @@
 
 <script type="text/ecmascript-6">
   import header from '@/components/header/header';
-  import swiper from '@/components/swiper/swiper';
+  /*  import swiper from '@/components/swiper/swiper'; */
   import download from '@/components/download/download';
-  const ERR_OK = 200;
+  const ERR_OK = 1;
   export default {
-    created () {
-      this.$axios.get('/api/banner').then((response) => {
-        response = response.data;
-        if (response.code === ERR_OK) {
-          this.banner = response;
-        }
-      });
+    mounted () {
+      this.getMessage();
+    },
+    methods: {
+      getMessage () {
+        this.$axios.get('/index/index/goods/id/' + this.$route.params.id).then((response) => {
+          response = response.data;
+          if (response.code === ERR_OK) {
+            this.list = response.data;
+            this.$nextTick(() => {
+              this.$refs.child.innerHTML = this.list.content;
+            });
+          } else {
+            console.log(1);
+          }
+        });
+      }
     },
     data () {
       return {
         title: '商品详情',
         show: false,
-        banner: {}
+        list: ''
       };
     },
     components: {
-      'vSwiper': swiper,
+      /*   'vSwiper': swiper, */
       'vHeader': header,
       'vDownload': download
     }
-  };
+  }
+  ;
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
