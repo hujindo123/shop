@@ -2,27 +2,27 @@
   <div>
     <v-header :type="0"></v-header>
     <div class="main_wrapper">
-      <vue-loading type="bars"  style="margin-top: 150px" v-show="loading" color="#25b9cb" :size="{ width: '50px', height: '50px' }"></vue-loading>
-      <scroller>
-        <div class="nav">
-          <div class="items">
-            <template v-if="category">
-              <template v-for="(x, index) in category">
-                <router-link :to="{path:'/typepage/'+x.id+'/'+x.name}"  :show="true" class="item">
-                  <img :src="'../../../static/img/list-icon/'+x.id+'.png'">
-                  <p class="pic-t">{{x.name}}</p>
+   <!--   <vue-loading type="bars" style="margin-top: 150px" v-show="loading" color="#25b9cb"
+                   :size="{ width: '50px', height: '50px' }"></vue-loading>-->
+      <scroller :on-refresh="onRefresh" :on-infinite="onInfinite" ref="my_scroller">
+          <div class="nav">
+            <div class="items">
+              <template v-if="category">
+                <template v-for="(x, index) in category">
+                  <router-link :to="{path:'/typepage/'+x.id+'/'+x.name}" :show="true" class="item">
+                    <img :src="'../../../static/img/list-icon/'+x.id+'.png'">
+                    <p class="pic-t">{{x.name}}</p>
+                  </router-link>
+                </template>
+                <router-link :to="{path:'/more',}" class="item">
+                  <img src="../../../static/img/list-icon/more.png">
+                  <p class="pic-t">更多分类</p>
                 </router-link>
               </template>
-              <router-link :to="{path:'/more',}" class="item">
-                <img src="../../../static/img/list-icon/more.png">
-                <p class="pic-t">更多分类</p>
-              </router-link>
-            </template>
-
+            </div>
           </div>
-        </div>
-        <v-swiper :banner="banner" ></v-swiper>
-        <v-list :line="false" :list="list" v-if="list.length > 0"></v-list>
+          <v-swiper :banner="banner"></v-swiper>
+          <v-list :line="false" :list="list" v-if="list.length > 0"></v-list>
       </scroller>
     </div>
     <v-footer></v-footer>
@@ -42,6 +42,7 @@
         loading: true,
         category: '',
         banner: [],
+        listData: [],
         list: []
       };
     },
@@ -64,9 +65,35 @@
       this.$axios.get('/index/index/homestores').then((response) => {
         response = response.data;
         if (response.code === ERR_OK) {
-          this.list = response.data;
+          this.listData = response.data;
+          this.list = this.listData.slice(0, 5);
         }
       });
+    },
+    methods: {
+      onRefresh (done) {
+        setTimeout(() => {
+          done();
+        }, 1500);
+      },
+      onInfinite (done) {
+        var self = this;
+        setTimeout(() => {
+          var n = 10;
+          if (self.listData.length > self.list.length) {
+            if (self.listData.length - self.list.length > 10) {
+              n = 10;
+            } else {
+              n = self.listData.length - self.list.length;
+            }
+            self.list = self.list.concat(self.listData.slice(self.list.length, self.list.length + n));
+            // console.log(self.list);
+            done();
+          } else {
+            done(true);
+          }
+        }, 1500);
+      }
     },
     components: {
       vueLoading,

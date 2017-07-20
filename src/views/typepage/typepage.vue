@@ -1,12 +1,13 @@
 <template>
   <div>
     <v-header :title="this.$route.params.name" :type="2"></v-header>
-    <scroller class="type-list">
-      <vue-loading type="bars" style="margin-top: 150px" v-show="loading" color="#25b9cb"
-                   :size="{ width: '50px', height: '50px' }"></vue-loading>
-      <v-list v-if="list.length > 0" :list="list"></v-list>
-      <section class="empty" v-else="cate">{{empty}}</section>
-    </scroller>
+    <!-- <vue-loading type="bars" style="margin-top: 150px" v-show="loading" color="#25b9cb"
+                  :size="{ width: '50px', height: '50px' }"></vue-loading>-->
+    <keep-alive>
+      <scroller class="type-list" :on-refresh="onRefresh" :on-infinite="onInfinite" ref="my_scroller">
+        <v-list  v-if="list.length > 0" :list="list"></v-list>
+      </scroller>
+    </keep-alive>
   </div>
 </template>
 
@@ -21,8 +22,12 @@
         loading: true,
         title: '',
         list: [],
-        empty: ''
+        listData: [],
+        bottom: 1
       };
+    },
+    deactivated () {
+      this.$destroy(true);
     },
     watch: {
       '$route' () {
@@ -30,25 +35,49 @@
         this.getCate();
         this.list = [];
         this.empty = '';
+        this.$destroy(true);
       }
     },
-    created () {
+    mounted () {
       this.getCate();
     },
     methods: {
       getCate () {
-        if (this.$route.params.id) {
-          this.$axios.get('/index/index/cagestores/cateid/' + this.$route.params.id).then((response) => {
+        var self = this;
+        if (self.$route.params.id) {
+          self.$axios.get('/index/index/cagestores/cateid/' + self.$route.params.id).then((response) => {
             response = response.data;
+            self.loading = false;
             if (response.code === ERR_OK) {
-              this.list = response.data.stores;
-            } else {
-              this.empty = response.msg;
+              self.listData = response.data.stores;
+              self.list = self.listData.slice(0, 5);
             }
-            this.title = response.data.category_name;
-            this.loading = false;
+            self.title = response.data.category_name;
           });
         }
+      },
+      onRefresh (done) {
+        setTimeout(() => {
+          done();
+        }, 1500);
+      },
+      onInfinite (done) {
+        var self = this;
+        setTimeout(() => {
+          var n = 10;
+          if (self.listData.length > self.list.length) {
+            if (self.listData.length - self.list.length > 10) {
+              n = 10;
+            } else {
+              n = self.listData.length - self.list.length;
+            }
+            self.list = self.list.concat(self.listData.slice(self.list.length, self.list.length + n));
+            // console.log(self.list);
+            done();
+          } else {
+            done(true);
+          }
+        }, 1500);
       }
     },
     components: {

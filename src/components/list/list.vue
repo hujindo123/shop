@@ -69,10 +69,11 @@
 <style lang="stylus" rel="stylesheet/stylus">
   .list
     width 100%
+    height 100%
     position relative
-    padding-bottom 100px
     .list_item
       width 100%
+      height 100%
       position relative
       .list_item_wrapper
         width 100%

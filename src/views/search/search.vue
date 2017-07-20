@@ -6,7 +6,10 @@
                    :size="{ width: '50px', height: '50px' }"></vue-loading>
       <template v-for="(item, index) in list" v-if="list">
         <template v-if="item.isgood == 1"><!--是商品-->
-          <router-link :to="{path:'/details/'+item.id}">{{item.name}}</router-link>
+          <router-link :to="{path:'/details/'+item.id}" class="search_line">{{item.name}}</router-link>
+        </template>
+        <template v-if="item.isgood == 0 "> <!-- 是商店 -->
+          <router-link :to="{path:'/store/'+item.id + '/' + encodeURI(item.name)}" class="search_line">{{item.name}}</router-link>
         </template>
       </template>
       <div v-if="list.length<=0" class="empty">
@@ -17,6 +20,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import LoadMore from '@/components/scroller/scroller';
   import vueLoading from 'vue-loading-template';
   import { bus } from '@/vuex/bus';
   import header from '@/components/header/header';
@@ -59,6 +63,7 @@
       }
     },
     components: {
+      LoadMore,
       vueLoading,
       'vHeader': header
     }
@@ -69,7 +74,11 @@
 <style lang="stylus" rel="stylesheet/stylus">
   .search-list
     padding-top 4.4rem
-
+    .search_line
+      padding 15px
+      display block
+      font-size 16px
+      text-decoration underline
   .empty
     text-align center
     font-size 16px

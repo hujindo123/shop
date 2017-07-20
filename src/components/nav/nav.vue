@@ -25,7 +25,7 @@
         <vue-loading type="spin" style="margin-top: 30px" v-show="loading2" color="#25b9cb"
                      :size="{ width: '20px', height: '20px' }"></vue-loading>
         <template v-if="right_row" v-for="(item, index) in items2">
-          <router-link :to="{path:'/details/'+item.id}" class="right_row" >
+          <router-link :to="{path:'/details/'+item.id}" class="right_row">
             <div class="right_row_left">
               <img src="../../../static/img/icon_shop.png" alt="">
             </div>
@@ -122,6 +122,7 @@
         this.items2 = [];
         this.empty = '';
         this.msg = '';
+        this.selected = 0;
       }
     },
     created () {
@@ -267,6 +268,7 @@
       box-sizing border-box
       height 100%
       position relative
+      background #f4f4f4
       .left_row
         position relative
         text-align center
@@ -344,6 +346,7 @@
       width 7rem
       height 7rem
       margin 0 auto
+      overflow hidden
       img
         width 100%
         display block
