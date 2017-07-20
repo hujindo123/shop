@@ -20,7 +20,6 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import LoadMore from '@/components/scroller/scroller';
   import vueLoading from 'vue-loading-template';
   import { bus } from '@/vuex/bus';
   import header from '@/components/header/header';
@@ -63,7 +62,6 @@
       }
     },
     components: {
-      LoadMore,
       vueLoading,
       'vHeader': header
     }

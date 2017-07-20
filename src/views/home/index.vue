@@ -117,13 +117,13 @@
     overflow hidden
     position absolute
     box-sizing border-box
-    padding-top 4.4rem
     ._v-container
       position relative
       .nav
         width 100%
         box-sizing border-box
         padding 0 5%
+        padding-top 4.4rem
         position relative
         background #fff
         overflow hidden

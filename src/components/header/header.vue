@@ -57,7 +57,7 @@
     left 0
     box-sizing border-box
     padding 0.4rem 0
-    background url("bg.png") 0 0 repeat-x
+    background url("/static/img/bg.png") 0 0 repeat-x
     background-size contain
     z-index 3000
     line-height 3.8rem
@@ -90,7 +90,7 @@
       width 3.8rem
     .header-logo
       flex-grow 1
-      background url("./logo.png") center center no-repeat
+      background url("/static/img/logo.png") center center no-repeat
       background-size contain
     .search_input
       padding 0 2.4rem

@@ -1,8 +1,8 @@
 <template>
-  <swiper :options="swiperOption" ref="mySwiper" >
+  <swiper :options="swiperOption" ref="mySwiper">
     <!-- slides -->
     <swiper-slide class="swiper-slide" :key="index" v-for="(item, index) in banner">
-      <img :src="/api/+item.url" alt="">
+      <img :src="baseUrl+item.url" alt="">
     </swiper-slide>
     <!-- Optional controls -->
     <div class="swiper-pagination" slot="pagination"></div>
@@ -10,7 +10,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import {swiper, swiperSlide} from 'vue-awesome-swiper';
+  import { swiper, swiperSlide } from 'vue-awesome-swiper';
   export default {
     props: {
       banner: {
@@ -64,10 +64,10 @@
 
   .swiper-pagination
     .swiper-pagination-bullet
-        width 0.8rem
-        height 0.8rem
-        background #dcdcdc
-        opacity 1
+      width 0.8rem
+      height 0.8rem
+      background #dcdcdc
+      opacity 1
     .swiper-pagination-bullet-active
       background: #f63
 </style>
