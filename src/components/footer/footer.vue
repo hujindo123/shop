@@ -7,13 +7,13 @@
       </router-link>
     </li>
     <li class="footer-nav">
-      <router-link :to="{path: '/details',query:{ areaid: 3}}" class="sxf">
+      <router-link :to="{path: '/map'}" class="sxf">
         <div class="img position-img"></div>
         <span>附近商家</span>
       </router-link>
     </li>
     <li class="footer-nav" @click="change">
-         <transition name="list-fade">
+        <!-- <transition name="list-fade">
            <ul class="about" v-if="listShow">
              <li class="list-li">
                <router-link to="/download">使用说明</router-link>
@@ -25,7 +25,7 @@
                <router-link to="/c">APP下载</router-link>
              </li>
            </ul>
-         </transition>
+         </transition>-->
       <a class="user">
         <div class="img user-img"></div>
         <span>关于我们</span>

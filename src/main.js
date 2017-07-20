@@ -7,7 +7,7 @@ import { BASE_URL } from '@/router/config';
 import axios from 'axios';
 import VueScroller from 'vue-scroller';
 
-axios.defaults.baseURL = '/api';
+axios.defaults.baseURL = '/api/fastadmin/public';
 Vue.prototype.baseUrl = BASE_URL;
 Vue.prototype.$axios = axios;
 

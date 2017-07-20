@@ -7,7 +7,7 @@ import details from '@/views/details/details'; // 详情页面
 import store from '@/views/store/store'; // 店面详情
 import search from '@/views/search/search'; // 搜索页面
 import typepage from '@/views/typepage/typepage'; // 分类页面
-
+import map from '@/views/map/map'; // 附近商家
 Vue.use(Router);
 export default new Router({
   mode: 'history',
@@ -43,6 +43,10 @@ export default new Router({
           component: typepage
         }
       ]
+    },
+    {
+      path: '/map',
+      component: map
     }
   ]
 });
