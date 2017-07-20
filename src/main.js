@@ -7,18 +7,17 @@ import { BASE_URL } from '@/router/config';
 import axios from 'axios';
 import VueScroller from 'vue-scroller';
 
-axios.defaults.baseURL = '/api/fastadmin/public';
+axios.defaults.baseURL = '/fastadmin/public'; // api/
 Vue.prototype.baseUrl = BASE_URL;
 Vue.prototype.$axios = axios;
 
 Vue.use(VueScroller);
 Vue.config.productionTip = false;
 
-/* eslint-disable no-new */
+/* eslint-disable no-new */  /* mode: 'history', */
 new Vue({
   el: '#app',
   router,
-  mode: 'history',
   template: '<App/>',
   components: {App}
 });
