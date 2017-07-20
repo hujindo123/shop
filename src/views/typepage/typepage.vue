@@ -5,7 +5,7 @@
                   :size="{ width: '50px', height: '50px' }"></vue-loading>-->
     <keep-alive>
       <scroller class="type-list" :on-refresh="onRefresh" :on-infinite="onInfinite" ref="my_scroller">
-        <v-list  v-if="list.length > 0" :list="list"></v-list>
+        <v-list v-if="list.length > 0" :list="list"></v-list>
       </scroller>
     </keep-alive>
   </div>
@@ -35,7 +35,6 @@
         this.getCate();
         this.list = [];
         this.empty = '';
-        this.$destroy(true);
       }
     },
     mounted () {
@@ -50,7 +49,7 @@
             self.loading = false;
             if (response.code === ERR_OK) {
               self.listData = response.data.stores;
-              self.list = self.listData.slice(0, 5);
+              /* self.list = self.listData.slice(0, 5); */
             }
             self.title = response.data.category_name;
           });
@@ -71,7 +70,13 @@
             } else {
               n = self.listData.length - self.list.length;
             }
-            self.list = self.list.concat(self.listData.slice(self.list.length, self.list.length + n));
+            if (self.bottom === 1) {
+              self.list = self.listData.slice(0, 5);
+              self.bottom++;
+            } else {
+              self.list = self.list.concat(self.listData.slice(self.list.length, self.list.length + n));
+            }
+
             // console.log(self.list);
             done();
           } else {
