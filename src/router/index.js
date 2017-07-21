@@ -10,7 +10,7 @@ import typepage from '@/views/typepage/typepage'; // 分类页面
 import map from '@/views/map/map'; // 附近商家
 Vue.use(Router);
 export default new Router({
-  mode: 'hash',
+  mode: 'history',
   linkActiveClass: 'link-active',
   routes: [
     {
