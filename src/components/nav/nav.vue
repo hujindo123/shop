@@ -25,9 +25,9 @@
         <vue-loading type="spin" style="margin-top: 30px" v-show="loading2" color="#25b9cb"
                      :size="{ width: '20px', height: '20px' }"></vue-loading>
         <template v-if="right_row" v-for="(item, index) in items2">
-          <router-link :to="{path:'/details/'+item.id}" class="right_row" >
+          <router-link :to="{path:'/details/'+item.id}" class="right_row">
             <div class="right_row_left">
-              <img src="../../../static/img/icon_shop.png" alt="">
+              <img :src="baseUrl+item.logo" alt="" style="width: 100%;display: block">
             </div>
             <div class="right_row_right">
               <div class="right_row_right_h">{{item.name}}/{{item.unit}}</div>
@@ -42,7 +42,7 @@
     </div>
     <div class="goods-details" v-show="tabShow2" v-if="msg">
       <div class="shop_sp">
-        <img :src="this.baseUrl+msg.logo" alt="">
+        <img :src="this.baseUrl + msg.logo" alt="" style="width:100%;display: block" >
       </div>
       <div class="shop_name">{{msg.name}}</div>
       <ul class="shop_list">
@@ -267,7 +267,7 @@
       flex 0 0 8.5rem
       box-sizing border-box
       height 100%
-      position relative!important
+      position relative !important
       .left_row
         height 100%
         position relative
@@ -299,7 +299,7 @@
     .my_scroller_2
       flex 1
       height 100%
-      position relative!important
+      position relative !important
       .right_row
         padding 1.3rem 1rem
         display flex
