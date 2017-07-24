@@ -49,20 +49,13 @@
     },
     created () {
       /* 分类列表 */
-     /* this.$axios.get('/index/index/category').then((response) => {
+      this.$axios.get('/index/index/category').then((response) => {
         response = response.data;
         if (response.code === ERR_OK) {
           this.category = response.data.slice(0, 7);
         }
-      }); */
-      /* banner
-      this.$axios.get('/index/index/slideshow').then((response) => {
-        response = response.data;
-        this.loading = false;
-        if (response.code === ERR_OK) {
-          this.banner = response.data;
-        }
-      }); */
+      });
+      /* banner */
       this.$axios.get('/index/index/slideshow').then((response) => {
         response = response.data;
         this.loading = false;
@@ -70,12 +63,19 @@
           this.banner = response.data;
         }
       });
-    /*  this.$axios.get('/index/index/homestores').then((response) => {
+      this.$axios.get('/index/index/slideshow').then((response) => {
+        response = response.data;
+        this.loading = false;
+        if (response.code === ERR_OK) {
+          this.banner = response.data;
+        }
+      });
+      this.$axios.get('/index/index/homestores').then((response) => {
         response = response.data;
         if (response.code === ERR_OK) {
           this.listData = response.data;
         }
-      }); */
+      });
     },
     methods: {
       onRefresh (done) {

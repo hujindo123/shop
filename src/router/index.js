@@ -8,9 +8,10 @@ import store from '@/views/store/store'; // 店面详情
 import search from '@/views/search/search'; // 搜索页面
 import typepage from '@/views/typepage/typepage'; // 分类页面
 import map from '@/views/map/map'; // 附近商家
+import NotFoundComponent from '@/views/NotFoundComponent/NotFoundComponent'; // 附近商家
 Vue.use(Router);
 export default new Router({
-  mode: 'history',
+  mode: 'hash',
   linkActiveClass: 'link-active',
   routes: [
     {
@@ -47,6 +48,10 @@ export default new Router({
     {
       path: '/map',
       component: map
+    },
+    {
+      path: '*',
+      component: NotFoundComponent
     }
   ]
 });

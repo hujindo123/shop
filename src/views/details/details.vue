@@ -10,7 +10,9 @@
           <!--<v-swiper :banner="banner"></v-swiper>-->
           <div class="desc">
             <div class="details_type">
-              <router-link :to="{path:'/store/'+this.$route.params.id+'/'+encodeURI(list.storename)}">{{list.storename}}</router-link>
+              <router-link :to="{path:'/store/'+this.$route.params.id+'/'+encodeURI(list.storename)}">
+                {{list.storename}}
+              </router-link>
             </div>
             <div class="details_title">{{list.name}}</div>
             <div class="details_price">￥{{list.price}}<span class="details_num">库存：{{list.nums}}</span><i
@@ -19,7 +21,7 @@
           </div>
           <div class="details_xq">
             <div class="details_h1">商品详情</div>
-            <div class="details_desc_img" ref="child">{{list.content}}</div>
+            <div class="details_desc_img" v-html="content"></div>
           </div>
         </template>
       </scroller>
@@ -48,15 +50,14 @@
     },
     methods: {
       getMessage () {
+        var self = this;
         if (this.$route.params.id) {
           this.$axios.get('/index/index/goods/id/' + this.$route.params.id).then((response) => {
             response = response.data;
             this.loading = false;
             if (response.code === ERR_OK) {
               this.list = response.data;
-              this.$nextTick(() => {
-                this.$refs.child.innerHTML = this.list.content;
-              });
+              this.content = response.data.content.replace(/\/fastadmin/g, self._url + '/fastadmin');
             } else {
               console.log(1);
             }
@@ -87,7 +88,10 @@
     position absolute
     width 100%
     height 100%
-    top 4.4rem
+    padding-top 4.4rem
+    box-sizing border-box
+    ._v-container
+      position relative
     .desc
       font-size 0
       padding 1rem 1.5rem 1.8rem 1.5rem
@@ -128,4 +132,7 @@
         font-size 1.4rem
         color rgb(51, 51, 51)
         background #f5f5f5
+      .details_desc_img
+        img
+          width 100%!important
 </style>
