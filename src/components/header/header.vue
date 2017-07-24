@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <span class="icon-back" @click="back"></span>
+    <span class="icon-back" @click="back" v-if="type != 0"></span>
     <span class="header-center" v-if="type == 1 || type == 2">{{title}}</span>
     <span class="header-logo" v-if="type == 0">{{title}}</span>
     <router-link to="/search" class="icon-search" v-if="type!=2 && type!=3 "></router-link>
