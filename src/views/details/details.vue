@@ -122,17 +122,19 @@
           position absolute
           right 0
           background url("../../../static/img/add.png") center center no-repeat
-          background-size contain
-    .details_xq
-      width 100%
-      position relative
-      .details_h1
-        padding 1.4rem 0
-        text-align center
-        font-size 1.4rem
-        color rgb(51, 51, 51)
-        background #f5f5f5
-      .details_desc_img
-        img
-          width 100%!important
+          background-size 2.4rem 2.4rem
+          padding 2rem
+          margin-top -2rem
+  .details_xq
+    width 100%
+    position relative
+    .details_h1
+      padding 1.4rem 0
+      text-align center
+      font-size 1.4rem
+      color rgb(51, 51, 51)
+      background #f5f5f5
+    .details_desc_img
+      img
+        width 100% !important
 </style>

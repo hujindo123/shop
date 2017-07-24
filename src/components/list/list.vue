@@ -9,7 +9,7 @@
           <div class="list_item_right">
             <div class="line"><i class=" icon icon_pu"></i><span class="icon_title">{{item.name}}</span></div>
             <div class="line"><i class=" icon icon_shop"></i><i class=" icon icon_car"></i><span
-              class="icon_time">{{item.datestr}} | ￥{{item.delivery_fee}}</span>
+              class="icon_time">{{item.datestr}} | {{item.delivery_fee === '免运费' ? ' 免邮费' : '￥' + item.delivery_fee}}</span>
             </div>
             <div class="line last"><span class="icon_time">{{item.addr}}</span></div>
             <!--   <div class="list_m">13m</div> -->

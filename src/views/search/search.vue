@@ -4,12 +4,13 @@
     <scroller class="search-list">
       <vue-loading type="spiningDubbles" style="margin-top: 20px" v-show="loading" color="#25b9cb"
                    :size="{ width: '50px', height: '50px' }"></vue-loading>
-      <template v-for="(item, index) in list" v-if="list">
+      <template v-for="(item, index) in list" v-if="list" class="tr_line">
         <template v-if="item.isgood == 1"><!--是商品-->
           <router-link :to="{path:'/details/'+item.id}" class="search_line">{{item.name}}</router-link>
         </template>
         <template v-if="item.isgood == 0 "> <!-- 是商店 -->
-          <router-link :to="{path:'/store/'+item.id + '/' + encodeURI(item.name)}" class="search_line">{{item.name}}</router-link>
+          <router-link :to="{path:'/store/'+item.id + '/' + encodeURI(item.name)}" class="search_line">{{item.name}}
+          </router-link>
         </template>
       </template>
       <div v-if="list.length<=0" class="empty">
@@ -76,7 +77,10 @@
       padding 15px
       display block
       font-size 16px
-      text-decoration underline
+      &:nth-child(odd)
+        background #ffffff
+      &:nth-child(even)
+        background #f5f5f5
   .empty
     text-align center
     font-size 16px

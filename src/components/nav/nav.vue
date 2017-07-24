@@ -32,7 +32,7 @@
             <div class="right_row_right">
               <div class="right_row_right_h">{{item.name}}/{{item.unit}}</div>
               <div class="row_cun">库存（{{ item.nums }}） </div>
-              <div class="row_price">￥{{item.price}}<i class="details_add" @click="show=true"></i></div>
+              <div class="row_price">￥{{item.price}}<i class="details_add" @click.prevent="show=true"></i></div>
             </div>
           </router-link>
         </template>
@@ -42,7 +42,7 @@
     </div>
     <div class="goods-details" v-show="tabShow2" v-if="msg">
       <div class="shop_sp">
-        <img :src="this.baseUrl + msg.logo" alt="" style="width:100%;display: block" >
+        <img :src="this.baseUrl + msg.logo" alt="" style="width:100%;display: block">
       </div>
       <div class="shop_name">{{msg.name}}</div>
       <ul class="shop_list">
@@ -335,9 +335,10 @@
               height 2.4rem
               position absolute
               right 0
-              bottom -3px
+              bottom -5px
               background url("../../../static/img/add.png") center center no-repeat
-              background-size contain
+              background-size 2.4rem 2.4rem
+              padding 0.5rem
 
   .goods-details
     position relative
