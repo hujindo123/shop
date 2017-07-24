@@ -32,7 +32,7 @@
             <div class="right_row_right">
               <div class="right_row_right_h">{{item.name}}/{{item.unit}}</div>
               <div class="row_cun">库存（{{ item.nums }}） </div>
-              <div class="row_price">￥{{item.price}}<i class="details_add" @click.prevent="show=true"></i></div>
+              <div class="row_price">￥{{item.price}}<i class="details_add" @click.prevent="show=!show"></i></div>
             </div>
           </router-link>
         </template>

@@ -6,12 +6,12 @@
         <span>首页</span>
       </router-link>
     </li>
-    <li class="footer-nav">
+  <!--  <li class="footer-nav">
       <router-link :to="{path: '/map'}" class="sxf">
         <div class="img position-img"></div>
         <span>附近商家</span>
       </router-link>
-    </li>
+    </li>-->
     <li class="footer-nav" @click="change">
         <!-- <transition name="list-fade">
            <ul class="about" v-if="listShow">

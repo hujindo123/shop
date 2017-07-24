@@ -17,7 +17,7 @@
             <div class="details_title">{{list.name}}</div>
             <div class="details_price">￥{{list.price}}<span class="details_num">库存：{{list.nums}}</span><i
               class="details_add"
-              @click="show=true"></i></div>
+              @click="show=!show"></i></div>
           </div>
           <div class="details_xq">
             <div class="details_h1">商品详情</div>
